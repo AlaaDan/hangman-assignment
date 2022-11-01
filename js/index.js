@@ -7,8 +7,9 @@
  document.querySelector('figure').classList.add('legs')
 
  */
+
 let hangMan =['scaffold','head','body', 'arms', 'legs' ];
-let wordList = ["apple", "camel", "sweden"];
+//let wordList = ["apple", "camel", "sweden"];
 let randomWord = wordList[Math.floor(Math.random()*wordList.length)];
 let display = Array(randomWord.length).fill("_");
 let lives = 0;
@@ -23,15 +24,11 @@ let interval;
 playButton.addEventListener('click', () => {
     playButton.style.display = "none";
     document.querySelector('.game-container').style.display ="block";
-    let count = 20;
+    let count = 60;
     interval = setInterval(function(){
     document.getElementById('count').innerHTML=count;
     if (count === 0){
-        // clearInterval(interval);
-        gameover('loss');
-        // document.getElementById('count').innerHTML='Done';
-        // or...
-        // alert("You're out of time!");
+        gameover('timeout');
     }
     count--;
     }, 1000);
@@ -44,13 +41,12 @@ function getKeyboardKey(){
         }
     })
 }
-//console.log(userGuess);
 console.log(randomWord);
 
 function letterChecker(character){
 
     inputHTML.value = "";
-    let userGuess = character;
+    let userGuess = character.toLowerCase();
     console.log(userGuess);
     if(userGuess.length === 1){
         for (let i =0; i < randomWord.length; i++){
@@ -61,12 +57,19 @@ function letterChecker(character){
         }
 
     } else {
-        alert("Enter 1 letter at a time")
+        alert("Enter 1 letter at a time");
+        return
     }
     if(randomWord.includes(userGuess) === false){
-        wrongLetter.push(userGuess);
-        document.querySelector('figure').classList.add(hangMan[lives]);
-        lives ++;
+        if(!wrongLetter.includes(userGuess)){
+            wrongLetter.push(userGuess);
+            document.querySelector('figure').classList.add(hangMan[lives]);
+            lives ++;
+        } else {
+            // alert("Already guessed that letter")
+        }
+        
+
         if(lives === 5) {
             gameover('loss')
         }
@@ -84,18 +87,21 @@ function gameover(text) {
     clearInterval(interval);
     let gameoverHTML = document.querySelector("#gameover");
     let playAgainButton = document.querySelector("#play-again");
+    inputHTML.style.display = "none";
     playAgainButton.style.display = 'block'
     playAgainButton.addEventListener('click', () => {
         location.reload();
     })
     if(text === 'loss'){
         gameoverHTML.innerHTML = `Game Over, you lost... The word was: ${randomWord}`;
-        inputHTML.style.display = "none";
+        // inputHTML.style.display = "none";
         // playButton.style.display = "block"
     }
     else if (text === "win"){
         gameoverHTML.innerHTML = "You guessed the word, Congratz!";
-        inputHTML.style.display = "none";
+        // inputHTML.style.display = "none";
+    } else {
+        gameoverHTML.innerHTML = `Game over! You ran out of time... The word was: ${randomWord}`;
 
     }
 }
