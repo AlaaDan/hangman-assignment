@@ -2,6 +2,10 @@
 
 *  {
     box-sizing: border-box;
+    font-family: 'Eater', cursive;
+    color:#fa6701;
+    animation: flicker 5s linear infinite;
+
 }
 
 body {
@@ -10,6 +14,7 @@ body {
     display: flex;
     justify-content: center;
     background-color: #7349AC;
+    
 }
 
 input {
@@ -24,20 +29,46 @@ input {
 #display {
     color: white;
     text-align: center;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    animation: none;
 }
-#play {
+p{
+    margin: 0;
+}
+#play, #play-again {
     display: block;
-    margin: 2rem;
+    font-size: 1.5rem;
+    width: 210px;
+    height: 75px;
+    border-radius: 30px;
+    border-style: none;
+    border: 2px solid #fa6701;
 }
 
 #wrong-letters {
     color: white;
     text-align: center;
     font-size: 2rem;
+    margin: 0;
 }
-.game-container, #play-again {
+.game-container{
     display: none;
+    width: 400px;
+    height: 400px;
+    text-align: center;
+}
+#play-again{
+    display: none;
+    margin-left: 100px;
+}
+
+#count{
+    font-size: 4rem;
+    position:absolute;
+    top: 40%;
+    left: 35%;
+    color:white;
+    
 }
 
 .letters {
@@ -71,6 +102,8 @@ input {
     position: relative;
     width: 160px;
     height: 200px;
+    margin-left: 50px;
+    
 }
   
 .ghost-body {

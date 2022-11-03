@@ -21,6 +21,7 @@ let inputHTML = document.querySelector('#user-guess');
 let wrongLetterHTML = document.querySelector("#wrong-letters");
 let playButton = document.querySelector("#play");
 let interval;
+
 playButton.addEventListener('click', () => {
     playButton.style.display = "none";
     document.querySelector('.game-container').style.display ="block";
