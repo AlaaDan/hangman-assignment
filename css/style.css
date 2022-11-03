@@ -45,20 +45,26 @@ p{
     border: 2px solid #fa6701;
 }
 
+
 #wrong-letters {
     color: white;
+    animation: none;
     text-align: center;
     font-size: 2rem;
-    margin: 0;
+    display: inline;
+    border: 2px solid #fff;
+    padding: 0 10px 0 10px;
+    border-radius: 20px;
 }
 .game-container{
     display: none;
     width: 400px;
-    height: 400px;
+    height: 500px;
     text-align: center;
 }
 #play-again{
     display: none;
+    margin-top: 20px;
     margin-left: 100px;
 }
 
