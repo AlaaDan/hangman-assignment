@@ -31,6 +31,7 @@ playButton.addEventListener('click', function playListener() {
 playAgainButton.addEventListener('click', () => {
     //nollställl spelet:
     inputHTML.style.display = "inline";
+    document.querySelector("figure").classList.remove("legs", "head", "scaffold", "arms", "body");
     playAgainButton.style.display = 'none'
     wrongLetterHTML.innerHTML = "";
     randomWord = wordList[Math.floor(Math.random() * wordList.length)];
